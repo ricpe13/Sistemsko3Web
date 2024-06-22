@@ -31,7 +31,7 @@ namespace GithubIssues
             commentsObservable.Subscribe(
                 comment => { /* Ne prikazujemo komentare u konzoli */ },
                 ex => Console.WriteLine($"Error: {ex.Message}"),
-                () => Console.WriteLine("Svi komentari su obrađeni."));
+                () => Console.WriteLine("Svi komentari su obradjeni."));
 
             var server = new HttpListener();
             server.Prefixes.Add("http://localhost:8080/");
@@ -94,12 +94,12 @@ namespace GithubIssues
                                 responseString.AppendLine($"Komentar: {result.Text}");
                                 for (int i = 0; i < result.Topics.Length; i++)
                                 {
-                                    responseString.AppendLine($"  Topic {i}: {result.Topics[i]}");
+                                    responseString.AppendLine($"  Tema {i}: {result.Topics[i]}");
                                 }
                                 responseString.AppendLine();
                             }
 
-                            logMessage.AppendLine("Zahtev uspešno obrađen.");
+                            logMessage.AppendLine("Zahtev uspesno obradjen.");
                             response.StatusCode = (int)HttpStatusCode.OK;
                             using var writer = new StreamWriter(response.OutputStream);
                             writer.Write(responseString.ToString());
@@ -123,10 +123,10 @@ namespace GithubIssues
             }
             catch (Exception ex)
             {
-                logMessage.AppendLine($"Došlo je do greške: {ex.Message}");
+                logMessage.AppendLine($"Doslo je do greske: {ex.Message}");
                 response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 using var writer = new StreamWriter(response.OutputStream);
-                writer.Write("Došlo je do greške prilikom obrade zahteva.");
+                writer.Write("Doslo je do greske prilikom obrade zahteva.");
             }
             finally
             {
