@@ -14,7 +14,7 @@ namespace GithubIssues
     {
         static async Task Main(string[] args)
         {
-            var token = "OVDE IDE TOKEN";
+            var token = "OVDE SE PISE TOKEN";
 
             var productInformation = new ProductHeaderValue("GithubIssuesApp");
             var credentials = new Credentials(token);
@@ -69,7 +69,7 @@ namespace GithubIssues
                             logMessage.AppendLine("Nisi uneo neki parametar");
                             response.StatusCode = (int)HttpStatusCode.BadRequest;
                             using var writer = new StreamWriter(response.OutputStream);
-                            writer.Write("Nisi uneo neki parametar");
+                            writer.Write("Nisi uneo neki parametar"); //ispis u pretrazivacu
                         }
                         else
                         {
@@ -107,10 +107,10 @@ namespace GithubIssues
                     }
                     else
                     {
-                        logMessage.AppendLine("Nisu uneti svi parametri");
+                        logMessage.AppendLine("Uneo si previse ili premalo parametara");
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         using var writer = new StreamWriter(response.OutputStream);
-                        writer.Write("Nisu uneti svi segmenti");
+                        writer.Write("Uneo si previse ili premalo parametara");
                     }
                 }
                 else
