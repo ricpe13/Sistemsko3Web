@@ -29,7 +29,8 @@ namespace GithubIssues
             var commentsObservable = commentsSubject.AsObservable();
 
             commentsObservable.Subscribe(
-                comment => { /* Ne prikazujemo komentare u konzoli */ },
+                //comment => {  },
+                comment => Console.WriteLine($"Komentarisao {comment.User.Login}: {comment.Body}"),
                 ex => Console.WriteLine($"Error: {ex.Message}"),
                 () => Console.WriteLine("Svi komentari su obradjeni."));
 
