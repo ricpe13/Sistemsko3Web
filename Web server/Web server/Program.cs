@@ -66,10 +66,10 @@ namespace GithubIssues
 
                         if (string.IsNullOrEmpty(owner) || string.IsNullOrEmpty(repo) || !int.TryParse(issueNumberString, out var issueNumber))
                         {
-                            logMessage.AppendLine("Neispravni parametri zahteva.");
+                            logMessage.AppendLine("Nisi uneo neki parametar");
                             response.StatusCode = (int)HttpStatusCode.BadRequest;
                             using var writer = new StreamWriter(response.OutputStream);
-                            writer.Write("Neispravni parametri zahteva.");
+                            writer.Write("Nisi uneo neki parametar");
                         }
                         else
                         {
@@ -99,7 +99,7 @@ namespace GithubIssues
                                 responseString.AppendLine();
                             }
 
-                            logMessage.AppendLine("Zahtev uspesno obradjen.");
+                            logMessage.AppendLine("Zahtev uspesno obradjen");
                             response.StatusCode = (int)HttpStatusCode.OK;
                             using var writer = new StreamWriter(response.OutputStream);
                             writer.Write(responseString.ToString());
@@ -107,18 +107,18 @@ namespace GithubIssues
                     }
                     else
                     {
-                        logMessage.AppendLine("Nepoznata ruta.");
+                        logMessage.AppendLine("Nisu uneti svi parametri");
                         response.StatusCode = (int)HttpStatusCode.NotFound;
                         using var writer = new StreamWriter(response.OutputStream);
-                        writer.Write("Nepoznata ruta.");
+                        writer.Write("Nisu uneti svi segmenti");
                     }
                 }
                 else
                 {
-                    logMessage.AppendLine("Nepoznata ruta.");
+                    logMessage.AppendLine("Nije GET metoda");
                     response.StatusCode = (int)HttpStatusCode.NotFound;
                     using var writer = new StreamWriter(response.OutputStream);
-                    writer.Write("Nepoznata ruta.");
+                    writer.Write("Nije GET metoda");
                 }
             }
             catch (Exception ex)
@@ -126,7 +126,7 @@ namespace GithubIssues
                 logMessage.AppendLine($"Doslo je do greske: {ex.Message}");
                 response.StatusCode = (int)HttpStatusCode.InternalServerError;
                 using var writer = new StreamWriter(response.OutputStream);
-                writer.Write("Doslo je do greske prilikom obrade zahteva.");
+                writer.Write("Doslo je do greske prilikom obrade zahteva");
             }
             finally
             {
